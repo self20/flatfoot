@@ -17,6 +17,27 @@ function scan($dir, $filetype) {
 }
 
 /**
+ * Returns a file's size in a human-readable format, as opposed to it just being in bytes.
+ *
+ * @param unknown $size
+ *        	The number of bytes.
+ * @param number $decimal
+ *        	Number of decimal places: default 2.
+ * @return string The human filesize.
+ * @since 2015-05-26
+ */
+function human_filesize($size, $decimal = 2) {
+	$sz = 'BKMGTP';
+	$factor = floor ( (strlen ( $size ) - 1) / 3 );
+	$type = @$sz [$factor];
+	if ($type != "B") {
+		$type = $type . "iB";
+	}
+	
+	return sprintf ( "%.{$decimal}f ", $size / pow ( 1024, $factor ) ) . $type;
+}
+
+/**
  * Displays a torrent's basic info in table format.
  *
  * USED BY index.php AND search.php
@@ -28,24 +49,13 @@ function scan($dir, $filetype) {
 function displayTorrent($t) {
 	$torrent = new Torrent ( $t );
 	
-	$size = $torrent->size () / 1024;
-	$type = "KiB";
-	
-	if ($size / 1024 / 1024 < 1) {
-		$size = round ( $size / 1024, 2 );
-		$type = "MiB";
-	} else {
-		$size = round ( $size / 1024 / 1024, 2 );
-		$type = "GiB";
-	}
-	
 	echo ('<tr>');
 	
 	// torrent name:
 	echo ('<td><a href="torrent.php?id=' . $torrent->hash_info () . '">' . $torrent->name () . '</a></td>');
 	
 	// torrent size:
-	echo ('<td>' . $size . ' ' . $type . '</td>');
+	echo ('<td>' . human_filesize ( $torrent->size () ) . '</td>');
 	
 	// .torrent:
 	echo ('<td><a href="' . $t . '">.torrent</a></td>');

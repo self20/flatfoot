@@ -15,9 +15,10 @@ $found = false;
 foreach ( scan ( './torrents', 'torrent' ) as $f ) {
 	$file = $f;
 	$torrent = new Torrent ( $f );
-	if ($torrent->hash_info () == $id)
+	if ($torrent->hash_info () == $id) {
 		$found = true;
-	break;
+		break;
+	}
 }
 
 if (! $found) {

@@ -1,9 +1,9 @@
 <?php
 define ( 'indirect', 1 );
-require_once ('./flatfoot.php');
-require_once ('./vendor/torrent-rw.php');
-require_once ('./vendor/functions.php');
-require_once ('./vendor/sty.header.php');
+require_once ((dirname ( __FILE__ )) . '/flatfoot.php');
+require_once ((dirname ( __FILE__ )) . '/vendor/torrent-rw.php');
+require_once ((dirname ( __FILE__ )) . '/vendor/functions.php');
+require_once ((dirname ( __FILE__ )) . '/vendor/sty.header.php');
 
 if (! isset ( $_GET ['query'] )) {
 	?>
@@ -24,6 +24,7 @@ if (! isset ( $_GET ['query'] )) {
 	</div>
 </div>
 <?php
+	require_once ((dirname ( __FILE__ )) . '/vendor/sty.footer.php');
 	die ();
 }
 

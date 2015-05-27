@@ -2,7 +2,7 @@
 if (! defined ( 'indirect' )) {
 	die ( 'Direct access prohibited.' );
 }
-require_once ('./flatfoot.php');
+require_once ((dirname ( __FILE__ )) . '/../flatfoot.php');
 ?>
 <br>
 <br>

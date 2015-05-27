@@ -1,14 +1,19 @@
 <?php
-define ( 'indirect', 1 );
-require_once ('./flatfoot.php');
-require_once ('./vendor/torrent-rw.php');
-require_once ('./vendor/functions.php');
-require_once ('./vendor/sty.header.php');
+define('indirect', 1);
+require_once ((dirname(__FILE__)) . '/flatfoot.php');
+require_once ((dirname(__FILE__)) . '/vendor/torrent-rw.php');
+require_once ((dirname(__FILE__)) . '/vendor/functions.php');
+require_once ((dirname(__FILE__)) . '/vendor/sty.header.php');
 
-if (! isset ( $_GET ['query'] )) {
-	?>
+if (! isset($_GET['query'])) {
+    ?>
 <div class="container">
-	<br> <br> <br> <br>
+	<br> <br>
+	<ul class="nav nav-pills">
+		<li><a href="./index.php">home</a></li>
+		<li class="active"><a href="#">search</a></li>
+	</ul>
+	<br> <br>
 	<div class="row">
 		<div class="col-lg-12">
 			<form action="search.php" method="get">
@@ -18,24 +23,24 @@ if (! isset ( $_GET ['query'] )) {
 						<button class="btn btn-default" type="submit">find</button>
 					</span>
 				</div>
-				<!-- /input-group -->
 			</form>
 		</div>
 	</div>
 </div>
 <?php
-	die ();
+    require_once ((dirname(__FILE__)) . '/vendor/sty.footer.php');
+    die();
 }
 
-$query = $_GET ['query'];
-$results = array ();
+$query = $_GET['query'];
+$results = array();
 
-foreach ( scan ( './torrents', 'torrent' ) as $f ) {
-	$file = $f;
-	$torrent = new Torrent ( $f );
-	if (preg_match ( '/' . $query . '/i', $torrent->name () )) {
-		array_push ( $results, $f );
-	}
+foreach (scan('./torrents', 'torrent') as $f) {
+    $file = $f;
+    $torrent = new Torrent($f);
+    if (preg_match('/' . $query . '/i', $torrent->name())) {
+        array_push($results, $f);
+    }
 }
 ?>
 <div class="container">
@@ -58,14 +63,14 @@ foreach ( scan ( './torrents', 'torrent' ) as $f ) {
 			<th>Magnet link</th>
 		</tr>
 		<?php
-	foreach ( $results as $r ) {
-		displayTorrent ( $r );
-	}
-	?>
+    foreach ($results as $r) {
+        displayTorrent($r);
+    }
+    ?>
 			</table>
 			<?php
 } else {
-	?>
+    ?>
 	<p align="center">No results found.</p>
 	<?php
 }

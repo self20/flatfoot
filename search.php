@@ -8,7 +8,12 @@ require_once ((dirname ( __FILE__ )) . '/vendor/sty.header.php');
 if (! isset ( $_GET ['query'] )) {
 	?>
 <div class="container">
-	<br> <br> <br> <br>
+	<br> <br>
+	<ul class="nav nav-pills">
+		<li><a href="./index.php">home</a></li>
+		<li class="active"><a href="#">search</a></li>
+	</ul>
+	<br> <br>
 	<div class="row">
 		<div class="col-lg-12">
 			<form action="search.php" method="get">

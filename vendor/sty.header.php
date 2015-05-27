@@ -1,8 +1,8 @@
 <?php
-if (! defined ( 'indirect' )) {
-	die ( 'Direct access prohibited.' );
+if (! defined('indirect')) {
+    die('Direct access prohibited.');
 }
-require_once ((dirname ( __FILE__ )) . '/../flatfoot.php');
+require_once ((dirname(__FILE__)) . '/../flatfoot.php');
 ?>
 <!-- flatfoot <?php echo (flatfoot::VERSION); ?> by Nick Schlobohm -->
 <!DOCTYPE html>

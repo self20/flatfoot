@@ -1,7 +1,10 @@
 <?php
-if (! defined ( 'indirect' )) {
-	die ( 'Direct access prohibited.' );
+if (! defined('indirect')) {
+    die('Direct access prohibited.');
 }
-class flatfoot {
-	const VERSION = "1.1 MINIMAL";
+
+class flatfoot
+{
+
+    const VERSION = "1.1 MINIMAL";
 }

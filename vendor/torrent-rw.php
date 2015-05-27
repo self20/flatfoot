@@ -1,6 +1,6 @@
 <?php
-if (! defined ( 'indirect' )) {
-	die ( 'Direct access prohibited.' );
+if (! defined('indirect')) {
+    die('Direct access prohibited.');
 }
 /**
  * Torrent

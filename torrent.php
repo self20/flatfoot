@@ -1,36 +1,36 @@
 <?php
-define ( 'indirect', 1 );
-require_once ((dirname ( __FILE__ )) . '/flatfoot.php');
-require_once ((dirname ( __FILE__ )) . '/vendor/torrent-rw.php');
-require_once ((dirname ( __FILE__ )) . '/vendor/functions.php');
+define('indirect', 1);
+require_once ((dirname(__FILE__)) . '/flatfoot.php');
+require_once ((dirname(__FILE__)) . '/vendor/torrent-rw.php');
+require_once ((dirname(__FILE__)) . '/vendor/functions.php');
 
-if (! isset ( $_GET ['id'] )) {
-	die ( 'A torrent ID must be specified.' );
+if (! isset($_GET['id'])) {
+    die('A torrent ID must be specified.');
 }
 
-$id = $_GET ['id'];
+$id = $_GET['id'];
 
 $found = false;
 
-foreach ( scan ( './torrents', 'torrent' ) as $f ) {
-	$file = $f;
-	$torrent = new Torrent ( $f );
-	if ($torrent->hash_info () == $id) {
-		$found = true;
-		break;
-	}
+foreach (scan('./torrents', 'torrent') as $f) {
+    $file = $f;
+    $torrent = new Torrent($f);
+    if ($torrent->hash_info() == $id) {
+        $found = true;
+        break;
+    }
 }
 
 if (! $found) {
-	die ( 'That torrent ID was invalid. No file was found in <code>./torrents/</code> - try again!' );
+    die('That torrent ID was invalid. No file was found in <code>./torrents/</code> - try again!');
 }
 
-$announce = $torrent->announce ();
-$comment = $torrent->comment ();
-$content = $torrent->content ();
-$magnet_html = $torrent->magnet ( true );
-$name = $torrent->name ();
-$size = $torrent->size ();
+$announce = $torrent->announce();
+$comment = $torrent->comment();
+$content = $torrent->content();
+$magnet_html = $torrent->magnet(true);
+$name = $torrent->name();
+$size = $torrent->size();
 
 require_once ('./vendor/sty.header.php');
 ?>
@@ -76,11 +76,11 @@ require_once ('./vendor/sty.header.php');
 			<td>
 				<div id="spoiler" style="display: none">
 					<br><?php
-					foreach ( $content as $f => $value ) {
-						
-						echo ('&nbsp;&nbsp;&nbsp;&nbsp;' . $f . ' [' . human_filesize ( $value ) . ']' . '<br>');
-					}
-					?>
+    foreach ($content as $f => $value) {
+        
+        echo ('&nbsp;&nbsp;&nbsp;&nbsp;' . $f . ' [' . human_filesize($value) . ']' . '<br>');
+    }
+    ?>
 				</div> <br> &nbsp;&nbsp;
 				<button class="btn btn-default"
 					onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}">Show/hide
@@ -90,5 +90,5 @@ require_once ('./vendor/sty.header.php');
 	</table>
 </div>
 <?php
-require_once ((dirname ( __FILE__ )) . '/vendor/sty.footer.php');
+require_once ((dirname(__FILE__)) . '/vendor/sty.footer.php');
 ?>

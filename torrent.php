@@ -30,6 +30,8 @@ $comment = $torrent->comment ();
 $content = $torrent->content ();
 $magnet_html = $torrent->magnet ( true );
 $name = $torrent->name ();
+$size = $torrent->size ();
+
 require_once ('./vendor/sty.header.php');
 ?>
 <div class="container">
@@ -66,21 +68,17 @@ require_once ('./vendor/sty.header.php');
 			<td><?php echo ($comment); ?></td>
 		</tr>
 		<tr>
+			<td>Size:</td>
+			<td><?php echo (human_filesize($size)); ?></td>
+		</tr>
+		<tr>
 			<td>Files:</td>
 			<td>
 				<div id="spoiler" style="display: none">
 					<br><?php
 					foreach ( $content as $f => $value ) {
-						$size = $content [$f] / 1024;
-						$type = "KiB";
-						if ($size / 1024 / 1024 < 1) {
-							$size = round ( $size / 1024, 2 );
-							$type = "MiB";
-						} else {
-							$size = round ( $size / 1024 / 1024, 2 );
-							$type = "GiB";
-						}
-						echo ('&nbsp;&nbsp;&nbsp;&nbsp;' . substr ( $f, strpos ( $f, '\\' ) + 1 ) . ' [' . $size . ' ' . $type . ']' . '<br>');
+						
+						echo ('&nbsp;&nbsp;&nbsp;&nbsp;' . $f . ' [' . human_filesize ( $value ) . ']' . '<br>');
 					}
 					?>
 				</div> <br> &nbsp;&nbsp;

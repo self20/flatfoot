@@ -10,7 +10,7 @@ if (! defined ( 'indirect' )) {
  * @param string $filetype
  *        	The file extension to look for.
  * @return array The scanned directory.
- * @since 2014-05-24
+ * @since 2015-05-24
  */
 function scan($dir, $filetype) {
 	return $i = glob ( $dir . "/*." . $filetype );

@@ -1,6 +1,6 @@
 {
   "name": "nickschlobohm/flatfoot",
-  "description": "A torrent PHP script.",
+  "description": "A simple PHP torrent tracker web UI.",
   "minimum-stability": "stable",
   "license": "Apache-2.0",
   "autoload": {

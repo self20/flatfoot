@@ -11,8 +11,8 @@ if (!isset($_GET['query'])) {
             <form action="/search" method="get">
                 <div class="input-group">
                     <input name="query" type="text" class="form-control"
-                           placeholder="search"> <span class="input-group-btn">
-						<button class="btn btn-default" type="submit">find</button>
+                           placeholder="Search query..."> <span class="input-group-btn">
+						<button class="btn btn-default" type="submit">Find</button>
 					</span>
                 </div>
             </form>

@@ -2,6 +2,7 @@
   "name": "nickschlobohm/flatfoot",
   "description": "A simple PHP torrent tracker web UI.",
   "minimum-stability": "stable",
+  "type": "project",
   "license": "Apache-2.0",
   "autoload": {
     "psr-4": {

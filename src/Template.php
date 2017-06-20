@@ -20,7 +20,7 @@ class Template
         return '<!DOCTYPE html>
 <html>
 <head>
-<title>flatfoot</title>
+<title>' . Config::NAME . '</title>
 <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
 <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -29,7 +29,7 @@ class Template
 <body>
     <div class="container">
 <div class="page-header">
-    <h1>flatfoot</h1>
+    <h1>' . Config::NAME . '</h1>
 </div>';
     }
 
@@ -37,8 +37,8 @@ class Template
     {
         return '<div class="text-center">
 	<p class="text-muted">
-		flatfoot &mdash; ' . Config::VERSION . '
-		<br> by <a href="http://github.com/nickschlobohm">Nick Schlobohm</a>
+		' . Config::NAME . ' &mdash; ' . Config::VERSION . '
+		<br> by <a target="_blank" href="http://github.com/nickschlobohm">Nick Schlobohm</a>
 	</p>
 </div>
 </div>
